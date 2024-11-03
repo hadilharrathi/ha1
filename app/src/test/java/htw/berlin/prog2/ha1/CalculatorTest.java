@@ -89,6 +89,59 @@ class CalculatorTest {
     }
 
 
-    //TODO hier weitere Tests erstellen
+    
+   //Teilaufgabe1 ha1 2.grüner Test division 2 positive nummer
+  @Test
+  @DisplayName("should display result after division two positive multi-digit numbers")
+  void testPositiveDivision() {
+      Calculator calc = new Calculator();
+
+      calc.pressDigitKey(2);
+      calc.pressBinaryOperationKey("/");
+      calc.pressDigitKey(2);
+      calc.pressEqualsKey();
+
+      String expected = "1";
+      String actual = calc.readScreen();
+
+      assertEquals(expected, actual);
+  }
+  //Teilaufgabe2 ha1. 1. roter Test division durch null ,error muss sein.
+  @Test
+  @DisplayName("should display result after division eine positive mit null multi-digit numbers")
+  void testNullDivision() {
+      Calculator calc = new Calculator();
+
+      calc.pressDigitKey(4);
+      calc.pressBinaryOperationKey("/");
+      calc.pressDigitKey(0);
+      calc.pressEqualsKey();
+
+      String expected = "error";
+      String actual = calc.readScreen();
+
+      assertEquals(expected, actual);
+  }
+  //Teilaufgabe2 ha1 2. roter Test negative square root nummer muss error sein.
+
+  @Test
+  @DisplayName("should display result after  the getting square root of negative numbers")
+  void testNegativeSquare() {
+      Calculator calc = new Calculator();
+      calc.pressNegativeKey();
+
+      calc.pressDigitKey(9);
+      calc.pressNegativeKey();
+      calc.pressUnaryOperationKey("√");
+      calc.pressEqualsKey();
+
+      String expected = "error";
+      String actual = calc.readScreen();
+
+      assertEquals(expected, actual);
+  }
+
+
 }
+
 
